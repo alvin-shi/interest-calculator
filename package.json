@@ -1,0 +1,17 @@
+{
+  "name": "interest-calculator-cli",
+  "version": "1.0.0",
+  "description": "A interest calculator cli tool",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "alvin-shi",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}
