@@ -1,4 +1,4 @@
-import { calculateRate } from "../../src/services/calculateRate.js"
+import { calculateRate } from "../../src/services/calculateRate"
 
 describe("when the interest rate of 12%", () => {
   const annualRate = 12
@@ -11,7 +11,7 @@ describe("when the interest rate of 12%", () => {
 
   describe("when interest is paid quarterly", () => {
     it("has an interest period rate of 3%", () => {
-      expect(calculateRate(annualRate, 3)).toEqual(annualRate / 12)
+      expect(calculateRate(annualRate, 3)).toEqual(annualRate / 4)
     })
   })
 

@@ -7,6 +7,6 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   eslintPluginPrettier,
   {
-    ignores: ["build/*", ".prettier.config.js", "eslint.config.mjs"],
+    ignores: ["build/*", "*.config.js", "*.config.mjs"],
   },
 );
