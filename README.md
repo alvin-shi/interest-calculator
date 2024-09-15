@@ -12,3 +12,7 @@ fnm install
 #### Docker
 
 #### Locally
+
+### Notes
+- Currently the equation is correct, but requires a way to make the math more
+precise. Implement BigDecimal to try get this to work
