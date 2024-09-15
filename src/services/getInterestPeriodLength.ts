@@ -1,9 +1,9 @@
 import { Frequency } from "../types/frequency"
 
 export const getInterestPeriodLength = (
-  interestPaidFrequency: string,
+  interestPaidFrequency: Frequency,
   termLengthInYears: number,
-): number | null => {
+): number => {
   switch (interestPaidFrequency) {
     case Frequency.Monthly:
       return 1
@@ -13,7 +13,5 @@ export const getInterestPeriodLength = (
       return 12
     case Frequency.AtMaturity:
       return termLengthInYears * 12
-    default:
-      return null
   }
 }
