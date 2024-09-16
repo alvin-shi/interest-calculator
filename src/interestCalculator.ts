@@ -8,7 +8,7 @@ import { calculateFinalBalance } from "./services/calculateFinalBalance"
 const cli = (): Command => {
   const program = new Command()
   program
-    .name('interest calculator')
+    .name('interest-calculator')
     .description('CLI to calculate interest')
 
   program.command('term-deposit')
