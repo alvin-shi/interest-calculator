@@ -54,7 +54,7 @@ const frequencyOptions = (): string[] => {
 }
 
 const validateNumber = (value: string): string => {
-  if (isNaN(value)) throw new InvalidOptionArgumentError("is not a number")
+  if (isNaN(+value)) throw new InvalidOptionArgumentError("is not a number")
   return value
 }
 
