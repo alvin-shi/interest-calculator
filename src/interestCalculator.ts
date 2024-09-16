@@ -26,12 +26,14 @@ const cli = (): Command => {
 }
 
 const termDepositHandler = (options: Input): void => {
-  console.log(calculateFinalBalance(
+  const finalBalance: BigNumber = calculateFinalBalance(
     new BigNumber(options.amount),
     new BigNumber(options.rate),
     new BigNumber(options.term),
     options.frequency as Frequency,
-  ))
+  )
+
+  console.log(`Final Balance: \$${finalBalance.toFormat(2)}`)
 }
 
 const frequencyOptions = (): string[] => {
