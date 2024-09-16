@@ -26,9 +26,7 @@ export const calculateFinalBalance = (
     termLengthYears,
     interestPeriodLength,
   )
-  return round(
-    finalCompoundRate.pow(numCompounds).multipliedBy(startingAmount)
-  )
+  return round(finalCompoundRate.pow(numCompounds).multipliedBy(startingAmount))
 }
 
 const calculateNumberCompounds = (

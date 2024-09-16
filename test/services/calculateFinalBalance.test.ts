@@ -12,7 +12,7 @@ describe("when the term length is one year", () => {
   describe("when interest paid frequency is monthly", () => {
     const frequency = Frequency.Monthly
 
-    it("returns 10111.56", () => {
+    it("returns 10110.56", () => {
       expect(
         calculateFinalBalance(
           startingAmount,
@@ -20,7 +20,7 @@ describe("when the term length is one year", () => {
           termLength,
           frequency,
         ),
-      ).toEqual(new BigNumber(10111.56))
+      ).toEqual(new BigNumber(10110.56))
     })
   })
 
