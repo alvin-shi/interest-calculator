@@ -1,6 +1,8 @@
+import BigNumber from "bignumber.js"
+
 export const calculateRate = (
-  annualRate: number,
-  interestPeriodInMonths: number,
+  annualRate: BigNumber,
+  interestPeriodInMonths: BigNumber,
 ) => {
-  return (annualRate * interestPeriodInMonths) / 12
+  return annualRate.multipliedBy(interestPeriodInMonths).dividedBy(12)
 }
