@@ -22,7 +22,9 @@ export const calculateFinalBalance = (
     termLengthYears,
     interestPeriodLength,
   )
-  const finalCompoundRate = new BigNumber(1).plus(percentToDecimal(interestPeriodRate))  
+  const finalCompoundRate = new BigNumber(1).plus(
+    percentToDecimal(interestPeriodRate),
+  )
 
   return finalCompoundRate.pow(numCompounds).multipliedBy(startingAmount)
 }
@@ -31,7 +33,9 @@ const calculateNumberCompounds = (
   termLengthYears: BigNumber,
   interestPeriodLength: BigNumber,
 ): BigNumber => {
-  return termLengthYears.multipliedBy(new BigNumber(12)).dividedBy(interestPeriodLength)
+  return termLengthYears
+    .multipliedBy(new BigNumber(12))
+    .dividedBy(interestPeriodLength)
 }
 
 const percentToDecimal = (percent: BigNumber): BigNumber => {
