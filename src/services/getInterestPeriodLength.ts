@@ -1,17 +1,19 @@
+import BigNumber from "bignumber.js"
+
 import { Frequency } from "../types/frequency"
 
 export const getInterestPeriodLength = (
   interestPaidFrequency: Frequency,
-  termLengthInYears: number,
-): number => {
+  termLengthInYears: BigNumber,
+): BigNumber => {
   switch (interestPaidFrequency) {
     case Frequency.Monthly:
-      return 1
+      return new BigNumber(1)
     case Frequency.Quarterly:
-      return 3
+      return new BigNumber(3)
     case Frequency.Annually:
-      return 12
+      return new BigNumber(12)
     case Frequency.AtMaturity:
-      return termLengthInYears * 12
+      return termLengthInYears.multipliedBy(12)
   }
 }
