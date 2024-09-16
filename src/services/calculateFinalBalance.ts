@@ -1,13 +1,15 @@
+import BigNumber from "bignumber.js"
+
 import { Frequency } from "../types/frequency"
 import { calculateRate } from "./calculateRate"
 import { getInterestPeriodLength } from "./getInterestPeriodLength"
 
 export const calculateFinalBalance = (
-  startingAmount: number,
-  annualRatePercent: number,
-  termLengthYears: number,
+  startingAmount: BigNumber,
+  annualRatePercent: BigNumber,
+  termLengthYears: BigNumber,
   interestPaidFrequency: Frequency,
-): number => {
+): BigNumber => {
   const interestPeriodLength = getInterestPeriodLength(
     interestPaidFrequency,
     termLengthYears,
@@ -20,14 +22,18 @@ export const calculateFinalBalance = (
     termLengthYears,
     interestPeriodLength,
   )
-  const finalCompoundRate = 1 + interestPeriodRate / 100
+  const finalCompoundRate = new BigNumber(1).plus(percentToDecimal(interestPeriodRate))  
 
-  return Math.pow(finalCompoundRate, numCompounds) * startingAmount
+  return finalCompoundRate.pow(numCompounds).multipliedBy(startingAmount)
 }
 
 const calculateNumberCompounds = (
-  termLengthYears: number,
-  interestPeriodLength: number,
-): number => {
-  return (termLengthYears * 12) / interestPeriodLength
+  termLengthYears: BigNumber,
+  interestPeriodLength: BigNumber,
+): BigNumber => {
+  return termLengthYears.multipliedBy(new BigNumber(12)).dividedBy(interestPeriodLength)
+}
+
+const percentToDecimal = (percent: BigNumber): BigNumber => {
+  return percent.dividedBy(new BigNumber(100))
 }

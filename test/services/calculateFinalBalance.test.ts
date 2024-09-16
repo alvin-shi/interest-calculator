@@ -1,11 +1,13 @@
+import BigNumber from "bignumber.js"
+
 import { Frequency } from "../../src/types/frequency"
 import { calculateFinalBalance } from "../../src/services/calculateFinalBalance"
 
-const startingAmount = 10000
-const annualRate = 1.1
+const startingAmount = new BigNumber(10000)
+const annualRate = new BigNumber(1.1)
 
 describe("when the term length is one year", () => {
-  const termLength = 1
+  const termLength = new BigNumber(1)
 
   describe("when interest paid frequency is monthly", () => {
     const frequency = Frequency.Monthly
@@ -18,7 +20,7 @@ describe("when the term length is one year", () => {
           termLength,
           frequency,
         ),
-      ).toEqual(10111.56)
+      ).toEqual(new BigNumber(10111.56))
     })
   })
 
@@ -33,7 +35,7 @@ describe("when the term length is one year", () => {
           termLength,
           frequency,
         ),
-      ).toEqual(10110.45)
+      ).toEqual(new BigNumber(10110.45))
     })
   })
 
@@ -48,7 +50,7 @@ describe("when the term length is one year", () => {
           termLength,
           frequency,
         ),
-      ).toEqual(10110)
+      ).toEqual(new BigNumber(10110))
     })
   })
 
@@ -63,13 +65,13 @@ describe("when the term length is one year", () => {
           termLength,
           frequency,
         ),
-      ).toEqual(10110)
+      ).toEqual(new BigNumber(10110))
     })
   })
 })
 
 describe("when the term length is 3 years", () => {
-  const termLength = 3
+  const termLength = new BigNumber(3)
 
   describe("when interest is paid at maturity", () => {
     const frequency = Frequency.AtMaturity
@@ -82,7 +84,7 @@ describe("when the term length is 3 years", () => {
           termLength,
           frequency,
         ),
-      ).toEqual(10330)
+      ).toEqual(new BigNumber(10330))
     })
   })
 })
