@@ -46,7 +46,7 @@ const termDepositHandler = (options: Input): void => {
     options.frequency as Frequency,
   )
 
-  console.log(`Final Balance: \$${finalBalance.toFormat(2)}`)
+  console.log(`Final Balance: $${finalBalance.toFormat(2)}`)
 }
 
 const frequencyOptions = (): string[] => {
