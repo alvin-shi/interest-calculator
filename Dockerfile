@@ -6,8 +6,11 @@ COPY ./package.json .
 COPY ./package-lock.json .
 COPY ./tsconfig.json .
 COPY ./src ./src
-COPY ./test ./test
 
 RUN npm install
 
+COPY ./test ./test
+COPY ./jest.config.js ./jest.config.js
+COPY ./eslint.config.mjs ./eslint.config.mjs
+COPY ./prettier.config.js ./prettier.config.js
 COPY ./interest-calculator ./interest-calculator
