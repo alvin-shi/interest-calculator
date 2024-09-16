@@ -1,9 +1,9 @@
 import { Command, Option } from "commander"
+import BigNumber from "bignumber.js"
 
 import { Frequency } from "./types/frequency"
 import { Input } from "./types/input"
 import { calculateFinalBalance } from "./services/calculateFinalBalance"
-import BigNumber from "bignumber.js"
 
 const cli = (): Command => {
   const program = new Command()
