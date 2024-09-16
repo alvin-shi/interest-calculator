@@ -26,7 +26,9 @@ export const calculateFinalBalance = (
     termLengthYears,
     interestPeriodLength,
   )
-  return round(finalCompoundRate.pow(numCompounds).multipliedBy(startingAmount))
+  return roundToDollar(
+    finalCompoundRate.pow(numCompounds).multipliedBy(startingAmount),
+  )
 }
 
 const calculateNumberCompounds = (
@@ -42,6 +44,6 @@ const percentToDecimal = (percent: BigNumber): BigNumber => {
   return percent.dividedBy(new BigNumber(100))
 }
 
-const round = (finalBalance: BigNumber): BigNumber => {
+const roundToDollar = (finalBalance: BigNumber): BigNumber => {
   return new BigNumber(finalBalance.toFixed(2))
 }
