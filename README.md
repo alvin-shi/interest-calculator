@@ -50,7 +50,7 @@ out how to integration test it
 
 ### Next steps
 - Look into IEEE rounding standards
-- Input validation for the numbers
+- Less hacky input validation
 - Supporting shorter term lengths
 - Potential edge cases:
     - Total term is not neatly divisible by the interest paid period

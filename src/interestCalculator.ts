@@ -1,4 +1,4 @@
-import { Command, Option } from "commander"
+import { Command, InvalidOptionArgumentError, Option } from "commander"
 import BigNumber from "bignumber.js"
 
 import { Frequency } from "./types/frequency"
@@ -7,18 +7,31 @@ import { calculateFinalBalance } from "./services/calculateFinalBalance"
 
 const cli = (): Command => {
   const program = new Command()
-  program
-    .name('interest-calculator')
-    .description('CLI to calculate interest')
+  program.name("interest-calculator").description("CLI to calculate interest")
 
-  program.command('term-deposit')
-    .description('Calculate the final balance for a term deposit')
-    .requiredOption('-a, --amount [deposit]', 'Initial deposit amount')
-    .requiredOption('-r, --rate [interest rate]', 'Annual interest rate')
-    .requiredOption('-t, --term [term]', 'Term deposit term in years')
+  program
+    .command("term-deposit")
+    .description("Calculate the final balance for a term deposit")
+    .requiredOption(
+      "-a, --amount [deposit]",
+      "Initial deposit amount",
+      validateNumber,
+    )
+    .requiredOption(
+      "-r, --rate [interest rate]",
+      "Annual interest rate",
+      validateNumber,
+    )
+    .requiredOption(
+      "-t, --term [term]",
+      "Term deposit term in years",
+      validateNumber,
+    )
     .addOption(
-      new Option('-f, --frequency [frequency]', 'Interest paid frequency')
-        .choices(frequencyOptions())
+      new Option(
+        "-f, --frequency [frequency]",
+        "Interest paid frequency",
+      ).choices(frequencyOptions()),
     )
     .action(termDepositHandler)
 
@@ -38,6 +51,11 @@ const termDepositHandler = (options: Input): void => {
 
 const frequencyOptions = (): string[] => {
   return Object.values(Frequency) as string[]
+}
+
+const validateNumber = (value: string): string => {
+  if (isNaN(value)) throw new InvalidOptionArgumentError("is not a number")
+  return value
 }
 
 cli().parse()
