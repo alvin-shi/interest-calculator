@@ -5,14 +5,20 @@ A simple CLI to be used to calculate the final balance of a term deposit
 ### Requirements
 This project was developed with Node.js `v20.17.0`. To install node, you can use
 `fnm`. The provided `.node-version` should also work with `nvm` but has not been 
-tested. Alternatively, you can use the provided `Dockerfile`.
+tested. 
+
+Alternatively, you can use the provided `Dockerfile`.
 
 ##### Linux/macOS
 ```bash
 brew install fnm
 fnm install
 ```
+
 ### Usage
+A [helper script](./interest-calculator) has been created to make testing this 
+CLI easier.
+
 #### Locally
 ```bash
 npm install
@@ -49,6 +55,7 @@ out how to integration test it
 - Not sure if BigNumber is the way to approach precision
 
 ### Next steps
+- Integration test for main CLI program
 - Look into IEEE rounding standards
 - Less hacky input validation
 - Supporting shorter term lengths

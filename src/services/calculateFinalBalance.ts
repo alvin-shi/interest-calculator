@@ -21,7 +21,6 @@ export const calculateFinalBalance = (
   const finalCompoundRate = new BigNumber(1).plus(
     percentToDecimal(interestPeriodRate),
   )
-
   const numCompounds = calculateNumberCompounds(
     termLengthYears,
     interestPeriodLength,
